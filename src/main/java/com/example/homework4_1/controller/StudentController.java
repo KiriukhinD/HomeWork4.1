@@ -1,7 +1,6 @@
 package com.example.homework4_1.controller;
 
 
-import com.example.homework4_1.entity.StudentParam;
 import com.example.homework4_1.model.Avatar;
 import com.example.homework4_1.model.Student;
 import com.example.homework4_1.service.StudentService;
@@ -108,7 +107,7 @@ public class StudentController {
     }
 
     @GetMapping("/StudentParam")
-    public Collection<StudentParam> findAllStudentParam() {
+    public int findAllStudentParam() {
         return studentService.findAllStudentParam();
     }
 
@@ -122,6 +121,11 @@ public class StudentController {
                                                        @RequestParam("size") Integer pageSize) {
         List<Avatar> avatar = studentService.getAllExpenses(pageNumber, pageSize);
         return ResponseEntity.ok().body(avatar);
+    }
+
+    @GetMapping("/averageAge")
+    public float averageAgeStudent() {
+        return studentService.averageAgeStudent();
     }
 
 }

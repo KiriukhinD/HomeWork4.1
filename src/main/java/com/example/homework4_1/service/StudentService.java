@@ -1,6 +1,5 @@
 package com.example.homework4_1.service;
 
-import com.example.homework4_1.entity.StudentParam;
 import com.example.homework4_1.model.Avatar;
 import com.example.homework4_1.model.Student;
 import com.example.homework4_1.repository.AvatarPaginAndSortRepository;
@@ -92,7 +91,7 @@ public class StudentService {
     }
 
 
-    public Collection<StudentParam> findAllStudentParam() {
+    public int findAllStudentParam() {
         return studentRepository.findByStudentId();
     }
 
@@ -103,6 +102,10 @@ public class StudentService {
 
     public List<Avatar> getAllExpenses(Integer pageNumber, Integer pageSize) {
         PageRequest pageRequest = PageRequest.of(pageNumber - 1, pageSize);
-        return avatarPaginAndSortRepository.findAll(pageRequest).getContent();
+        return avatarRepository.findAll(pageRequest).getContent();
+    }
+
+    public float averageAgeStudent() {
+        return studentRepository.averega();
     }
 }
