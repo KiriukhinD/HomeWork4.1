@@ -128,5 +128,6 @@ public class StudentController {
         return studentService.averageAgeStudent();
     }
 
+
 }
 

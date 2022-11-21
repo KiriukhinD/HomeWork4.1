@@ -12,38 +12,47 @@ import java.util.Collection;
 @Service
 public class FacultyService {
     private final FacultyRepository facultyRepository;
+    private final WeatherService weatherService;
 
-    public FacultyService(FacultyRepository facultyRepository) {
+    public FacultyService(FacultyRepository facultyRepository, WeatherService weatherService) {
         this.facultyRepository = facultyRepository;
+        this.weatherService = weatherService;
     }
 
     public Faculty create(Faculty faculty) {
+        weatherService.logger.info("method [create]");
         return facultyRepository.save(faculty);
     }
 
     public Faculty read(long id) {
+        weatherService.logger.info("method [read]");
         return facultyRepository.findById(id).get();
     }
 
     public Faculty update(Faculty faculty) {
+        weatherService.logger.info("method [update]");
         return facultyRepository.save(faculty);
     }
 
     public ResponseEntity<Faculty> delete(long id) {
+        weatherService.logger.info("method [delete]");
         facultyRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
 
 
     public Collection<Faculty> findByNameOrColor(String name, String color) {
+        weatherService.logger.info("metod [findByNameOrColor]");
         return facultyRepository.findByNameFacultyIgnoreCaseOrColorIgnoreCase(name, color);
     }
 
     public Collection<Faculty> getAll() {
+        weatherService.logger.info("method [getAll]");
         return facultyRepository.findAll();
     }
 
     public Collection<Student> getFacultyStudent(long id) {
+        weatherService.logger.info("method [getFacultyStudent]");
         return facultyRepository.findByStudentsId(id);
     }
 }
