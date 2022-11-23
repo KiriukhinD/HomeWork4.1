@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Comparator;
 
 
 @Service
@@ -54,5 +55,13 @@ public class FacultyService {
     public Collection<Student> getFacultyStudent(long id) {
         weatherService.logger.info("method [getFacultyStudent]");
         return facultyRepository.findByStudentsId(id);
+    }
+
+    public String nameLongFaculty() {
+        return facultyRepository.findAll()
+                .stream()
+                .map(Faculty::getNameFaculty)
+                .max(Comparator.comparingInt(String::length))
+                .orElseThrow(RuntimeException::new);
     }
 }

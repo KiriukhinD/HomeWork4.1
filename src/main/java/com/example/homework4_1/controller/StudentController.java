@@ -20,6 +20,7 @@ import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 
 @RestController
@@ -124,8 +125,13 @@ public class StudentController {
     }
 
     @GetMapping("/averageAge")
-    public float averageAgeStudent() {
+    public double averageAgeStudent() {
         return studentService.averageAgeStudent();
+    }
+
+    @GetMapping("/allStudentList")
+    public Stream<String> allStudentList() {
+        return studentService.allStudentList();
     }
 
 

@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static java.nio.file.StandardOpenOption.CREATE_NEW;
 
@@ -119,9 +120,22 @@ public class StudentService {
         return avatarRepository.findAll(pageRequest).getContent();
     }
 
-    public float averageAgeStudent() {
+    public double averageAgeStudent() {
         weatherService.logger.info("medod [averageAgeStudent]");
-        return studentRepository.averega();
+        return studentRepository.findAll().stream()
+                .mapToDouble(Student::getAge)
+                .average()
+                .orElseThrow(RuntimeException::new);
     }
+
+    public Stream<String> allStudentList() {
+        return studentRepository.findAll()
+                .stream()
+                .map(Student::getName)
+                .map(String::toUpperCase)
+                .filter(s -> s.startsWith("A"))
+                .sorted();
+    }
+
 
 }

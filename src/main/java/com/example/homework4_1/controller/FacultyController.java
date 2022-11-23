@@ -64,4 +64,8 @@ public class FacultyController {
         return facultyService.getFacultyStudent(id);
     }
 
+    @GetMapping("/nameLongFaculty")
+    public String nameLongFaculty() {
+        return facultyService.nameLongFaculty();
+    }
 }

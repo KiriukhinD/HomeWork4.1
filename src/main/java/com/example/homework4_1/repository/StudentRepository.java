@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.Optional;
 
 
 @Repository
@@ -20,6 +21,6 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     Collection<Student> studentFive();
 
     @Query(value = "select AVG(age) from  student", nativeQuery = true)
-    float averega();
+    Optional<Double> average();
 
 }
