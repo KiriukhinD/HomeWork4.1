@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collection;
+
 
 @RestController
 @RequestMapping("/info")
@@ -30,5 +32,14 @@ public class InfoController {
         return infoservice.returnNumber();
     }
 
+    @GetMapping("/allStudentNoSinhron")
+    public Collection allStudentListNoSinhron() {
+        return infoservice.allStudentListNoSinhron();
+    }
+
+    @GetMapping("/allStudentSinhron")
+    public Collection allStudentListSinhron() {
+        return infoservice.allStudentListSinhron();
+    }
 
 }

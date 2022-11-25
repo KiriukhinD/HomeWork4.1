@@ -17,8 +17,8 @@ public class Faculty {
     @Id
     @GeneratedValue
     private long id;
-    @JsonIgnore
-    @OneToMany(mappedBy = "faculty")
+   @JsonIgnore
+   @OneToMany(mappedBy = "faculty")
     private Collection<Student> students;
 
 
@@ -73,5 +73,8 @@ public class Faculty {
         return Objects.hash(id);
     }
 
-
+    @Override
+    public String toString() {
+        return "Faculty{" + "nameFaculty='" + nameFaculty + " " + ", color='" + color;
+    }
 }
